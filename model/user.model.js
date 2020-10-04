@@ -1,6 +1,4 @@
-const db = require('../db.js');
-const conn = db.init();
-db.connect(conn);
+const db = require('./db.js');
 
 const User = (user) => {
     this.email = user.email;
@@ -9,29 +7,33 @@ const User = (user) => {
     this.telephone = this.telephone;
 }
 
-User.create = (newUser, result) => {
-    const sql = `INSERT INTO user SET ?`;
-    db.query(sql, newUser, (err, res) => {
-        if(err) {
-            console.log('error : ', err);
-            result(err, null);
-            return;
-        }
-        
-        result(null, {id: res.InsertId, newUser});
+User.create = (req, res) => {
+    const sql = 'INSERT INTO user(email, password, name, telephone) VALUES(?, ?, ?, ?)';
+    const values = {
+        email: req.body.email, 
+        password: req.body.password, 
+        name: req.body.name, 
+        telephone: req.body.telephone
+    }
+    db.query(sql, values, (err, result) => {
+        if(!err) res.redirect('/');
+        else console.log(err);
+    })
+};
+
+User.getAll = (req, res) => {
+    db.query("SELECT * FROM user", (err, result) => {
+        if(!err) res.send(result);
+        else console.log(err);
     });
 };
 
-User.getAll = result => {
-    db.query('SELECT * FROM user', (err, res) => {
-        if(err){
-            console.log("error: ", err);
-            result(null, err);
-            return;
-        }
-
-        result(null, res);
-    });
-};
+User.findById = (req, res) => {
+    db.query("SELECT * FROM user WHERE id=?", [req.params.id], 
+    (err, result) => {
+        if(!err) res.send(result);
+        else console.log(err);
+    })
+}
 
 module.exports = User;

@@ -4,6 +4,8 @@ const user = require('../model/user.model');
 
 router.get('/', user.getAll);
 
-router.put('/', user.create);
+router.post('/create', user.create);
+
+router.get('/:id', user.findById);
 
 module.exports = router;
