@@ -1,12 +1,13 @@
-const mysql = require('mysql');
+const mysql = require("mysql");
+const dbConfig = require("./db.config.js");
 
 const db = {
-    host: 'localhost',
-    port: '3306',
-    user: 'root',
-    password: 'rlagkwjd0318',
-    database: 'blackbox'
-}
+  host: dbConfig.host,
+  port: dbConfig.port,
+  user: dbConfig.user,
+  password: dbConfig.password,
+  database: dbConfig.database
+};
 
 module.exports = {
     init: () => {

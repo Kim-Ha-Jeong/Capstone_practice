@@ -1,13 +1,11 @@
 const express = require('express');
 const app = express();
-
-const db_config = require(__dirname+'/database.js');
-const conn = db_config.init();
-db_config.connect(conn);
 const bodyParser = require('body-parser');
 
 const indexRouter = require('./router/index');
 const userRouter = require('./router/user');
+const fullRouter = require('./router/full');
+const editedRouter = require('./router/edited');
 
 app.use(express.json());
 app.set('views', __dirname+ '/views');
@@ -20,5 +18,7 @@ app.listen(3000, () => {
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
+app.use('/full', fullRouter);
+app.use('/edited', editedRouter);
 
 module.exports = app;
