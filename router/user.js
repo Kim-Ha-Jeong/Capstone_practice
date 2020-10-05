@@ -14,5 +14,6 @@ router.get('/:id', user.findById);
 router.post('/update/:id', user.updateById);
 router.get('/update/:id', user.update);
 
+router.get('/delete/:id', user.delete);
 
 module.exports = router;

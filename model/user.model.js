@@ -72,4 +72,11 @@ User.updateById = (req, res) => {
     })
 }
 
+User.delete = (req, res) => {
+    db.query("DELETE FROM user WHERE id = ?", req.params.id, (err, result)=> {
+        if(!err) res.redirect("/user");
+        else console.log(err);
+    })
+}
+
 module.exports = User;
