@@ -6,15 +6,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  <link rel="stylesheet" type="text/css" href="/style.css">
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-  <title>Hello, world!</title>
+  <title>User 생성</title>
 </head>
 
 <body>
-  <h1>User 생성</h1>
+  <a id="list" class="btn btn-primary" href="/user">User 조회 페이지로</a>
+  <h1 id="title">User 생성</h1>
   <div class="container-fluid">
     <form method="post">
       <div class="form-group">
@@ -37,7 +40,9 @@
         <input type="text" class="form-control" name="telephone">
       </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <div id="btn-wrap">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
     </form>
   </div>
 

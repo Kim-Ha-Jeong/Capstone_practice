@@ -7,6 +7,8 @@ const userRouter = require('./router/user');
 const fullRouter = require('./router/full');
 const editedRouter = require('./router/edited');
 
+app.use(express.static(__dirname+'/public'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('views', __dirname+ '/views');
